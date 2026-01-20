@@ -10,6 +10,12 @@ terraform {
   }
 }
 
+data "proxmox_nodes" "all" {}
+
+output "nodes" {
+  value = data.proxmox_nodes.all.names
+}
+
 resource "proxmox_vm_qemu" "web_server" {
   count       = 1
   name        = "almalinux-${count.index}"
