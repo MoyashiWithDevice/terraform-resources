@@ -1,10 +1,10 @@
-variable "proxmox_endpoint" {
+variable "endpoint" {
   type        = string
   default     = "https://<PROXMOX_IP>:8006/api2/json"
   description = "Proxmox API endpoint"
 }
 
-variable "proxmox_api_token" {
+variable "api_token" {
   type      = string
   sensitive = true
 }
