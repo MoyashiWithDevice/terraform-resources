@@ -9,7 +9,6 @@ variable "api_token" {
   sensitive = true
 }
 
-# VM作成に進むときに使う（今は未使用でもOK）
 variable "target_node" {
   type        = string
   default     = "pve"
