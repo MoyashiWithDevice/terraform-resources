@@ -43,7 +43,7 @@ resource "proxmox_virtual_environment_vm" "kube_ctrl" {
     numa         = false
     sockets      = 1
     type         = "x86-64-v2-AES"
-    units        = 0
+    units        = 1
   }
   disk {
     aio               = "io_uring"
@@ -155,7 +155,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_ubuntu" {
     numa         = false
     sockets      = 1
     type         = "x86-64-v2-AES"
-    units        = 0
+    units        = 1
   }
   disk {
     aio               = "io_uring"
@@ -261,7 +261,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_rhel" {
     numa         = false
     sockets      = 1
     type         = "x86-64-v2-AES"
-    units        = 0
+    units        = 1
   }
   disk {
     aio               = "io_uring"
