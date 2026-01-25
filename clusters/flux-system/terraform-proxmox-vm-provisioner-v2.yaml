@@ -13,7 +13,7 @@ spec:
   upgradeOnInit: true
   sourceRef:
     kind: GitRepository
-    name: my-infra-repo
+    name: terraform-resources
     namespace: flux-system
 
   # Terraform spec 直下の設定
