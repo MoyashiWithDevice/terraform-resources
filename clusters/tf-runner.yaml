@@ -1,0 +1,76 @@
+# tf-runner.yaml
+apiVersion: infra.contrib.fluxcd.io/v1alpha2
+kind: Terraform
+metadata:
+  name: proxmox-vm-provisioner-v3  # ロック問題を回避するためv3に変更
+  namespace: flux-system
+spec:
+  interval: 1m
+  approvePlan: auto
+  path: ./terraform/proxmox-vms
+  alwaysCleanupRunnerPod: false
+  # ロックエラーが発生した際に自動で解除を試みる設定（念のため）
+  forceUnlock: true 
+  
+  sourceRef:
+    kind: GitRepository
+    name: terraform-resources
+    namespace: flux-system
+
+  # Terraform spec 直下の設定
+  serviceAccountName: tf-runner
+
+  runnerPodTemplate:
+    spec:
+      image: ghcr.io/flux-iac/tf-runner:v0.16.0-rc.8
+      env: 
+        - name: PROXMOX_VE_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: proxmox-auth
+              key: endpoint
+        - name: PROXMOX_VE_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: proxmox-auth
+              key: api_token
+      volumeMounts:
+        - name: github-secrets
+          mountPath: /mnt/secrets/github
+          readOnly: true
+        - name: proxmox-secrets
+          mountPath: /mnt/secrets/proxmox
+          readOnly: true
+      volumes:
+        - name: github-secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: github-vault-secrets
+        - name: proxmox-secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: proxmox-vault-secrets
+
+  # 変数設定 (SecretProviderClassで作成されたSecretを参照)
+  vars:
+    - name: github_token
+      valueFrom:
+        secretKeyRef:
+          name: github-auth
+          key: token
+
+    - name: api_token
+      valueFrom:
+        secretKeyRef:
+          name: proxmox-auth
+          key: api_token
+
+    - name: endpoint
+      valueFrom:
+        secretKeyRef:
+          name: proxmox-auth
+          key: endpoint
