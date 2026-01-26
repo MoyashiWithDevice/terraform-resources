@@ -1,6 +1,6 @@
 [proxmox_vms]
 %{ for vm in vms ~}
-${vm.name} ansible_host=${vm.ipv4_addresses[1][0]} ansible_user=bababa
+${vm.name} ansible_host=${vm.ipv4_addresses[0][0]} ansible_user=bababa
 %{ endfor ~}
 
 [all:vars]
