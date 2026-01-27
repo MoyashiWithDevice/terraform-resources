@@ -22,3 +22,7 @@ import {
   to = proxmox_virtual_environment_vm.ubuntu_temp
   id = "proxmox-host1/106"
 }
+import {
+  to = proxmox_virtual_environment_vm.test_server
+  id = "proxmox-host1/107"
+}
