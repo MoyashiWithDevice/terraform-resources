@@ -21,5 +21,5 @@ variable "bridge" {
 
 variable "template_vmid" {
   type        = number
-  default     = 106
+  default     = 9000
 }
