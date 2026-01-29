@@ -49,7 +49,7 @@ resource "proxmox_virtual_environment_vm" "ubuntu_temp" {
     aio               = "io_uring"
     backup            = true
     cache             = "none"
-    datastore_id      = "data2"
+    datastore_id      = "local-lvm"
     discard           = "ignore"
     file_format       = "raw"
     file_id           = null
