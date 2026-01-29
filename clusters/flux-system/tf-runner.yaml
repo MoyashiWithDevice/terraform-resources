@@ -5,6 +5,8 @@ metadata:
   name: proxmox-vm-provisioner-v3  # ロック問題を回避するためv3に変更
   namespace: flux-system
 spec:
+tfstate:
+  locktimeout: 2m
   interval: 1m
   approvePlan: auto
   path: ./terraform/proxmox-vms
