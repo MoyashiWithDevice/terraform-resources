@@ -29,7 +29,7 @@ resource "proxmox_virtual_environment_vm" "test_server" {
     
     ip_config{
       ipv4{
-        address = "172.31.0.13/24"
+        address = "172.31.0.14/24"
         gateway = "172.31.0.254"
       }
     }
