@@ -1,8 +1,7 @@
 [proxmox_vms]
 %{ for vm in vms ~}
-%{ set ip = try(flatten(vm.ipv4_addresses)[0], "") ~}
-%{ if ip != "" ~}
-${vm.name} ansible_host=${ip} ansible_user=bababa
+%{ if try(flatten(vm.ipv4_addresses)[0], "") != "" ~}
+${vm.name} ansible_host=${try(flatten(vm.ipv4_addresses)[0], "")} ansible_user=bababa
 %{ endif ~}
 %{ endfor ~}
 
