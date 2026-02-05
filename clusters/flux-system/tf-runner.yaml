@@ -5,6 +5,7 @@ metadata:
   name: proxmox-vm-provisioner-v3  # ロック問題を回避するためv3に変更
   namespace: flux-system
 spec:
+  interval: 1m
   sourceRef:
     kind: GitRepository
     name: terraform-resources
