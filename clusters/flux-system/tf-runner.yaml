@@ -10,10 +10,7 @@ spec:
     kind: GitRepository
     name: terraform-resources
     namespace: flux-system
-
-  # Terraform spec 直下の設定
   serviceAccountName: tf-runner
-
   runnerPodTemplate:
     spec:
       image: ghcr.io/flux-iac/tf-runner:v0.16.0-rc.8
@@ -53,8 +50,6 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: proxmox-vault-secrets
-
-  # 変数設定 (SecretProviderClassで作成されたSecretを参照)
   vars:
     - name: github_token
       valueFrom:
