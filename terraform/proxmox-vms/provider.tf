@@ -13,6 +13,11 @@ terraform {
 
 provider "proxmox" {
   insecure = true
+
+  ssh{
+    agent = false
+    username = 
+  }
 }
 
 provider "github" {
