@@ -5,6 +5,7 @@ metadata:
   name: proxmox-vm-provisioner  # ロック問題を回避するためv3に変更
   namespace: flux-system
 spec:
+  approvePlan: "auto"
   interval: 1m
   path: ./terraform/proxmox-vms
   sourceRef:
