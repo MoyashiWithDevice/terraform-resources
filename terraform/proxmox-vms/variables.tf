@@ -9,6 +9,16 @@ variable "api_token" {
   sensitive = true
 }
 
+variable "ssh_username" {
+  type    = string
+  default = null # env から注入
+}
+
+variable "ssh_password" {
+  type    = string
+  default = null # env から注入
+}
+
 variable "target_node" {
   type        = string
   default     = "proxmox-host1"
