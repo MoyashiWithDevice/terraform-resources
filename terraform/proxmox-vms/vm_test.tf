@@ -20,7 +20,7 @@ resource "proxmox_virtual_environment_vm" "test_server" {
   }
 
   initialization {
-    datastore_id = "local-lvm"
+    datastore_id = "local"
     interface = "ide2"
     
     user_data_file_id = proxmox_virtual_environment_file.cloud_config.id
@@ -40,7 +40,7 @@ resource "proxmox_virtual_environment_vm" "test_server" {
 # 1. Cloud-initの設定をファイルとして定義し、Proxmoxにアップロード
 resource "proxmox_virtual_environment_file" "cloud_config" {
   content_type = "snippets"
-  datastore_id = "local-lvm" # スニペットを保存するストレージ名
+  datastore_id = "local" # スニペットを保存するストレージ名
   node_name    = var.target_node
 
   source_raw {
