@@ -9,11 +9,11 @@ variable "api_token" {
   sensitive = true
 }
 
-variable "ssh_username" {
+variable "username" {
   type    = string
 }
 
-variable "ssh_password" {
+variable "password" {
   type    = string
 }
 
