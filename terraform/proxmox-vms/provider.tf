@@ -7,6 +7,13 @@ terraform {
   }
 }
 
+terraform {
+  backend "local" {
+    path = "terraform.tfstate"
+  }
+}
+
+
 provider "proxmox" {
   insecure = true
 }
