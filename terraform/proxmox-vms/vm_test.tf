@@ -29,23 +29,22 @@ resource "proxmox_virtual_environment_vm" "test_server" {
         gateway = "172.31.0.254"
       }
     }
+    
     user = "ansible"
     sshkeys = [
       "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBL/kEsjJ+fb3432waZDbiTvLIwG+0pVNc4WAG179rVDqzDeX6xahWJu9taWZY1hszJuf8f1RMzBW7WHjrQ7M17s= bababa@k8s"
     ]
     
-#    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
-#cloud-config
-package_update: true
-packages:
-  - qemu-guest-agent
+    #cloud-config
+    package_update: true
+    packages:
+      - qemu-guest-agent
 
-runcmd:
-  - echo 'ansible ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/ansible
-  - chmod 440 /etc/sudoers.d/ansible
-  - systemctl enable qemu-guest-agent
-  - systemctl start qemu-guest-agent
-EOF
+    runcmd:
+      - echo 'ansible ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/ansible
+      - chmod 440 /etc/sudoers.d/ansible
+      - systemctl enable qemu-guest-agent
+      - systemctl start qemu-guest-agent
     
   }
   agent {
