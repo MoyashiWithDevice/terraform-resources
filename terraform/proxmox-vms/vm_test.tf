@@ -35,7 +35,7 @@ resource "proxmox_virtual_environment_vm" "test_server" {
 #      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBL/kEsjJ+fb3432waZDbiTvLIwG+0pVNc4WAG179rVDqzDeX6xahWJu9taWZY1hszJuf8f1RMzBW7WHjrQ7M17s= bababa@k8s"
 #    ]
     
-    user_data_override = <<EOF
+    user_data = <<EOF
 #cloud-config
 users:
   - name: ansible
