@@ -30,9 +30,9 @@ resource "proxmox_virtual_environment_vm" "test_server" {
         address = "172.31.0.13/24"
         gateway = "172.31.0.254"
       }
+      disconnected = false
     }
   }
-  wait_for_network_config = true
   agent {
     enabled = true
   }

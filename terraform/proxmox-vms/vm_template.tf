@@ -10,10 +10,16 @@ resource "proxmox_virtual_environment_vm" "ubuntu_temp" {
   initialization {
     datastore_id = "local-lvm"
     interface = "ide2"
+
+    ip_config{
+      ipv4{
+        gateway = "172.31.0.254"
+      }
+      disconnected = false
+    }
     
     user_data_file_id = proxmox_virtual_environment_file.cloud_config.id
-  }
-  wait_for_network_config = true
+  }  
   agent{
     enabled = true
   }
