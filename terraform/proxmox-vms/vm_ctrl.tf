@@ -18,9 +18,10 @@ resource "proxmox_virtual_environment_vm" "kube-ctrl-2" {
     model = "virtio"
     bridge = "vmbr32"
   }
-  
-  boot {
-    order = ["scsi0"] # または ide0 などテンプレートに合ったデバイス名
+
+  boot_order {
+    device = "scsi0"
+    order  = 1
   }
 
   initialization {
