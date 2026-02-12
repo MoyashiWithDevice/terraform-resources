@@ -20,6 +20,8 @@ resource "proxmox_virtual_environment_vm" "kube-ctrl-2" {
     bridge = "vmbr32"
   }
 
+  boot_order = ["scsi0"]
+
   initialization {
     datastore_id = "local-lvm"
     interface = "ide2"
