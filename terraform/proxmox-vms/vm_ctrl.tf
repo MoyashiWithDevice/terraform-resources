@@ -1,22 +1,22 @@
 # terraform/proxmox-vms/vm_test.tf
 resource "proxmox_virtual_environment_vm" "test_server" {
-  name        = "test-server"
-  vm_id = 107
+  name        = "kube-ctrl-2"
+  vm_id = 108
   node_name = var.target_node # Proxmoxのノード名
 
   clone{
     vm_id = var.template_vmid
   }
   cpu{
-    cores = 2
+    cores = 4
   }
   memory{
-    dedicated = 2048
+    dedicated = 8192
   }
 
   network_device {
     model = "virtio"
-    bridge = var.bridge
+    bridge = "vmbr32"
   }
 
   initialization {
@@ -27,8 +27,8 @@ resource "proxmox_virtual_environment_vm" "test_server" {
 
     ip_config{
       ipv4{
-        address = "172.31.0.13/24"
-        gateway = "172.31.0.254"
+        address = "172.32.0.10/24"
+        gateway = "172.32.0.254"
       }
     }
   }
