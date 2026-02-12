@@ -2,7 +2,7 @@
 resource "proxmox_virtual_environment_vm" "kube-ctrl-2" {
   name        = "kube-ctrl-2"
   vm_id = 108
-  node_name = var.target_node # Proxmoxのノード名
+  node_name = var.target_node
 
   clone{
     vm_id = var.template_vmid
@@ -17,6 +17,10 @@ resource "proxmox_virtual_environment_vm" "kube-ctrl-2" {
   network_device {
     model = "virtio"
     bridge = "vmbr32"
+  }
+  
+  boot {
+    order = ["scsi0"] # または ide0 などテンプレートに合ったデバイス名
   }
 
   initialization {
