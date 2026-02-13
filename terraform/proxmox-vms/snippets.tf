@@ -9,7 +9,6 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
 #cloud-config
 users:
   - name: ansible
-    groups: sudo
     shell: /bin/bash
     sudo: ALL=(ALL) NOPASSWD:ALL
     ssh_authorized_keys:
