@@ -5,6 +5,12 @@ resource "proxmox_virtual_environment_vm" "load_balancer" {
   name                                 = "lb-${count.index}"
   node_name                            = "proxmox-host1"
   vm_id                                = 110+ count.index
+
+  clone{
+    vm_id = var.template_vmid
+    full = true
+  }
+  
   cpu{
     cores = 4
   }
