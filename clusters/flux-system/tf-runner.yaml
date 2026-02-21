@@ -45,11 +45,26 @@ spec:
           readOnly: true
 
       env:
-            - name: PROXMOX_VE_ENDPOINT
-              value: /mnt/secrets/proxmox/endpoint
+        - name: TF_VAR_github_token
+          valueFrom:
+            secretKeyRef:
+              name: github-k8s-secret
+              key: github_token
 
-            - name: PROXMOX_VE_API_TOKEN
-              value: /mnt/secrets/proxmox/api_token
+        - name: TF_VAR_api_token
+          valueFrom:
+            secretKeyRef:
+              name: proxmox-k8s-secret
+              key: api_token
 
-            - name: GITHUB_TOKEN
-              value: /mnt/secrets/github/github_token
+        - name: TF_VAR_username
+          valueFrom:
+            secretKeyRef:
+              name: proxmox-k8s-secret
+              key: username
+
+        - name: TF_VAR_password
+          valueFrom:
+            secretKeyRef:
+              name: proxmox-k8s-secret
+              key: password
