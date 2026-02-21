@@ -6,8 +6,9 @@ terraform {
     }
   }
   
-  backend "local" {
-    path = "terraform.tfstate"
+  backend "kubernetes" {
+    namespace     = "flux-system"
+    secret_suffix = "proxmox-vm"
   }
 }
 
