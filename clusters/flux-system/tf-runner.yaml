@@ -16,6 +16,11 @@ spec:
   runnerPodTemplate:
     spec:
       image: ghcr.io/flux-iac/tf-runner:v0.16.0-rc.8
+      resources:
+        requests:
+          memory: "512Mi"
+        limits:
+          memory: "1Gi"
       
       volumes:
         - name: github-secrets
