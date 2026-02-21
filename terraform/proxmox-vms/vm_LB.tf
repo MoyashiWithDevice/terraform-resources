@@ -3,7 +3,7 @@ resource "proxmox_virtual_environment_vm" "load_balancer" {
   count = 2
   
   name                                 = "lb-${count.index}"
-  node_name                            = "lb"
+  node_name                            = "proxmox-host1"
   vm_id                                = 110+ count.index
   cpu{
     cores = 4
