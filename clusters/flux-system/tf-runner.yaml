@@ -13,16 +13,28 @@ spec:
     name: terraform-resources
     namespace: flux-system
   serviceAccountName: tf-runner
+  varsFrom:
+    - kind: Secret
+      name: proxmox-auth
   runnerPodTemplate:
     spec:
       image: ghcr.io/flux-iac/tf-runner:v0.16.0-rc.8
       env: 
         - name: PROXMOX_VE_ENDPOINT
-          value: /mnt/secrets/proxmox/endpoint
+          valueFrom:
+            secretKeyRef:
+              name: proxmox-auth
+              key: endpoint
         - name: PROXMOX_VE_API_TOKEN
-          value: /mnt/secrets/proxmox/api_token
+          valueFrom:
+            secretKeyRef:
+              name: proxmox-auth
+              key: api_token
         - name: GITHUB_TOKEN
-          value: /mnt/secrets/github/token
+          valueFrom:
+            secretKeyRef:
+              name: github-auth
+              key: token
       volumeMounts:
         - name: github-secrets
           mountPath: /mnt/secrets/github
@@ -43,3 +55,31 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: proxmox-vault-secrets
+  vars:
+    - name: github_token
+      valueFrom:
+        secretKeyRef:
+          name: github-auth
+          key: token
+
+    - name: api_token
+      valueFrom:
+        secretKeyRef:
+          name: proxmox-auth
+          key: api_token
+
+    - name: endpoint
+      valueFrom:
+        secretKeyRef:
+          name: proxmox-auth
+          key: endpoint
+    - name: username
+      valueFrom:
+        secretKeyRef:
+          name: proxmox-auth
+          key: username
+    - name: password
+      valueFrom:
+        secretKeyRef:
+          name: proxmox-auth
+          key: password
