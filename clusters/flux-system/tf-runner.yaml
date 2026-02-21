@@ -41,8 +41,6 @@ spec:
 
       env:
             - name: PROXMOX_VE_ENDPOINT
-              valueFrom:
-                secretKeyRef: null
               value: /mnt/secrets/proxmox/endpoint
 
             - name: PROXMOX_VE_API_TOKEN
