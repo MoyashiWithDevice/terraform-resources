@@ -1,5 +1,7 @@
 # __generated__ by Terraform
 resource "proxmox_virtual_environment_vm" "load_balancer" {
+  count = 2
+  
   name                                 = "lb-${count.index}"
   node_name                            = "lb"
   vm_id                                = 110+ count.index
