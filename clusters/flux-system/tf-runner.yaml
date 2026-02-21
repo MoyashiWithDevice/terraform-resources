@@ -48,23 +48,23 @@ spec:
         - name: TF_VAR_github_token
           valueFrom:
             secretKeyRef:
-              name: github-k8s-secret
+              name: github-vault-secrets
               key: github_token
 
         - name: TF_VAR_api_token
           valueFrom:
             secretKeyRef:
-              name: proxmox-k8s-secret
+              name: proxmox-auth
               key: api_token
 
         - name: TF_VAR_username
           valueFrom:
             secretKeyRef:
-              name: proxmox-k8s-secret
+              name: proxmox-auth
               key: username
 
         - name: TF_VAR_password
           valueFrom:
             secretKeyRef:
-              name: proxmox-k8s-secret
+              name: proxmox-auth
               key: password
