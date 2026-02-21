@@ -10,7 +10,7 @@ resource "proxmox_virtual_environment_vm" "load_balancer" {
     vm_id = var.template_vmid
     full = true
   }
-  
+
   cpu{
     cores = 4
   }
@@ -23,6 +23,14 @@ resource "proxmox_virtual_environment_vm" "load_balancer" {
     bridge = "vmbr32"
   }
   
+  disk {
+    datastore_id = "local-lvm"
+    interface    = "scsi0"
+    size         = 64
+    file_format  = "raw"
+  }
+  boot_order = ["scsi0"]
+
   initialization {
     datastore_id = "local-lvm"
     interface = "ide2"
