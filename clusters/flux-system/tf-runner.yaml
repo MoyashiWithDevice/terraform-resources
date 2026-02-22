@@ -41,8 +41,8 @@ spec:
         - name: proxmox-secrets
           mountPath: /mnt/secrets/proxmox
           readOnly: true
-      varsFrom:
-        - secretRef:
-            name: github-auth
-        - secretRef:
-            name: proxmox-auth
+  varsFrom:
+    - secretRef:
+        name: github-auth
+    - secretRef:
+        name: proxmox-auth
