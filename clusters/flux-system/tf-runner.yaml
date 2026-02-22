@@ -27,13 +27,13 @@ spec:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: github-auth
+              secretProviderClass: github-vault-secrets
         - name: proxmox-secrets
           csi:
             driver: secrets-store.csi.k8s.io
             readOnly: true
             volumeAttributes:
-              secretProviderClass: proxmox-auth
+              secretProviderClass: proxmox-vault-secrets
       volumeMounts:
         - name: github-secrets
           mountPath: /mnt/secrets/github
