@@ -39,7 +39,7 @@ resource "proxmox_virtual_environment_vm" "nfs_server" {
   cpu {
     affinity     = null
     architecture = null
-    cores        = 3
+    cores        = 2
     flags        = []
     hotplugged   = 0
     limit        = 0
@@ -66,7 +66,7 @@ resource "proxmox_virtual_environment_vm" "nfs_server" {
     ssd               = false
   }
   memory {
-    dedicated      = 4096
+    dedicated      = 2048
     floating       = 0
     hugepages      = null
     keep_hugepages = false
@@ -181,7 +181,7 @@ resource "proxmox_virtual_environment_vm" "truenas" {
     type              = "4m"
   }
   memory {
-    dedicated      = 8192
+    dedicated      = 4096
     floating       = 0
     hugepages      = null
     keep_hugepages = false
