@@ -86,7 +86,7 @@ resource "proxmox_virtual_environment_vm" "kube_ctrl" {
     type              = "4m"
   }
   memory {
-    dedicated      = 12288
+    dedicated      = 8192
     floating       = 0
     hugepages      = null
     keep_hugepages = false
