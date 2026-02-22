@@ -15,8 +15,17 @@ spec:
   varsFrom:
     - kind: Secret
       name: github-auth
+      varsKeys:
+        - github_token
+        - github_password
+        - github_username
     - kind: Secret
       name: proxmox-auth
+      varsKeys:
+        - endpoint
+        - api_token
+        - password
+        - username
   serviceAccountName: tf-runner
   runnerPodTemplate:
     spec:
