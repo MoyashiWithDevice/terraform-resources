@@ -12,6 +12,11 @@ spec:
     kind: GitRepository
     name: terraform-resources
     namespace: flux-system
+  varsFrom:
+    - kind: Secret
+      name: github-auth
+    - kind: Secret
+      name: proxmox-auth
   serviceAccountName: tf-runner
   runnerPodTemplate:
     spec:
@@ -41,8 +46,3 @@ spec:
         - name: proxmox-secrets
           mountPath: /mnt/secrets/proxmox
           readOnly: true
-  varsFrom:
-    - kind: Secret
-      name: github-auth
-    - kind: Secret
-      name: proxmox-auth
