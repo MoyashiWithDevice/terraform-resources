@@ -26,7 +26,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: github-auth
-              key: github_token
+              key: token
 
         - name: TF_VAR_api_token
           valueFrom:
