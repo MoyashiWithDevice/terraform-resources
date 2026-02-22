@@ -21,27 +21,23 @@ spec:
           memory: "512Mi"
         limits:
           memory: "1Gi"
-      env:
-        - name: TF_VAR_github_token
-          valueFrom:
-            secretKeyRef:
-              name: github-auth
-              key: token
-
-        - name: TF_VAR_api_token
-          valueFrom:
-            secretKeyRef:
-              name: proxmox-auth
-              key: api_token
-
-        - name: TF_VAR_username
-          valueFrom:
-            secretKeyRef:
-              name: proxmox-auth
-              key: username
-
-        - name: TF_VAR_password
-          valueFrom:
-            secretKeyRef:
-              name: proxmox-auth
-              key: password
+      volumes:
+        - name: github-secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: github-auth
+        - name: proxmox-secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: proxmox-auth
+      volumeMounts:
+        - name: github-secrets
+          mountPath: /mnt/secrets/github
+          readOnly: true
+        - name: proxmox-secrets
+          mountPath: /mnt/secrets/proxmox
+          readOnly: true
