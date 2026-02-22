@@ -195,7 +195,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_ubuntu" {
     ssd               = false
   }
   memory {
-    dedicated      = 4096
+    dedicated      = 8192
     floating       = 0
     hugepages      = null
     keep_hugepages = false
@@ -310,7 +310,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_rhel" {
     type              = "4m"
   }
   memory {
-    dedicated      = 4096
+    dedicated      = 8192
     floating       = 0
     hugepages      = null
     keep_hugepages = false
