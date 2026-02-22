@@ -15,6 +15,9 @@ terraform {
 provider "proxmox" {
   insecure = true
 
+  endpoint = var.endpoint
+  api_token = var.api_token
+
   ssh{
     agent = false
     username = var.username
