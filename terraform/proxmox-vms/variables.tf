@@ -24,7 +24,7 @@ variable "target_node" {
 
 variable "bridge" {
   type        = string
-  default     = "vmbr31"
+  default     = "vmbr32"
 }
 
 variable "template_vmid" {

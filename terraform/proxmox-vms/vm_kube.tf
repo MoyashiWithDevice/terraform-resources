@@ -93,17 +93,17 @@ resource "proxmox_virtual_environment_vm" "kube_ctrl" {
     shared         = 0
   }
   network_device {
-    bridge       = "vmbr31"
+    bridge       = "vmbr32"
     disconnected = false
     enabled      = true
     firewall     = false
     mac_address  = "00:0c:29:f1:b7:60"
-    model        = "vmxnet3"
+    model        = "virtio"
     mtu          = 0
     queues       = 0
     rate_limit   = 0
     trunks       = null
-    vlan_id      = 0
+    vlan_id      = 10
   }
   operating_system {
     type = "l26"
@@ -212,7 +212,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_ubuntu" {
     queues       = 0
     rate_limit   = 0
     trunks       = null
-    vlan_id      = 0
+    vlan_id      = 20
   }
   operating_system {
     type = "l26"
@@ -327,7 +327,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_rhel" {
     queues       = 0
     rate_limit   = 0
     trunks       = null
-    vlan_id      = 0
+    vlan_id      = 20
   }
   operating_system {
     type = "l26"

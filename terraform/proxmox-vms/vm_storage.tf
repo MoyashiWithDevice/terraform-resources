@@ -73,7 +73,7 @@ resource "proxmox_virtual_environment_vm" "nfs_server" {
     shared         = 0
   }
   network_device {
-    bridge       = "vmbr31"
+    bridge       = "vmbr32"
     disconnected = false
     enabled      = true
     firewall     = true
@@ -83,7 +83,7 @@ resource "proxmox_virtual_environment_vm" "nfs_server" {
     queues       = 0
     rate_limit   = 0
     trunks       = null
-    vlan_id      = 0
+    vlan_id      = 10
   }
   operating_system {
     type = "l26"
@@ -188,17 +188,17 @@ resource "proxmox_virtual_environment_vm" "truenas" {
     shared         = 0
   }
   network_device {
-    bridge       = "vmbr31"
+    bridge       = "vmbr32"
     disconnected = false
     enabled      = true
     firewall     = false
     mac_address  = "00:0c:29:ae:72:f2"
-    model        = "vmxnet3"
+    model        = "virtio"
     mtu          = 0
     queues       = 0
     rate_limit   = 0
     trunks       = null
-    vlan_id      = 0
+    vlan_id      = 10
   }
   operating_system {
     type = "l26"
