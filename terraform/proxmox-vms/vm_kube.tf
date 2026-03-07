@@ -36,7 +36,7 @@ resource "proxmox_virtual_environment_vm" "kube_ctrl" {
   cpu {
     affinity     = null
     architecture = null
-    cores        = 6
+    cores        = 4
     flags        = []
     hotplugged   = 0
     limit        = 0
