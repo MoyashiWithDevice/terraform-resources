@@ -3,11 +3,9 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
   datastore_id = "local" # スニペットを保存するストレージ名
   node_name    = var.target_node
 
-  ssh {
-    username = var.username # ProxmoxにSSHできるユーザー (例: root や terraform_user)
-    password = var.password # そのユーザーのパスワード
-    node_name = "pve"
-  }
+  username = var.username # ProxmoxにSSHできるユーザー (例: root や terraform_user)
+  password = var.password # そのユーザーのパスワード
+  node_name = "pve"
 
   source_raw {
     file_name = "setup-cloud-config.yaml"
