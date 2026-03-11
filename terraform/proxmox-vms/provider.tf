@@ -5,11 +5,12 @@ terraform {
       version = "~> 0.50"
     }
   }
-  
+  /*
   backend "kubernetes" {
     namespace     = "flux-system"
     secret_suffix = "proxmox-vm"
   }
+  */
 }
 
 provider "proxmox" {
