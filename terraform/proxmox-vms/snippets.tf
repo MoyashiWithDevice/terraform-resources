@@ -5,7 +5,6 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
 
   username = var.username # ProxmoxにSSHできるユーザー (例: root や terraform_user)
   password = var.password # そのユーザーのパスワード
-  node_name = "pve"
 
   source_raw {
     file_name = "setup-cloud-config.yaml"
