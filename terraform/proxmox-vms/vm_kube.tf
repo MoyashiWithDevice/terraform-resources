@@ -42,7 +42,7 @@ resource "proxmox_virtual_environment_vm" "kube_ctrl" {
     limit        = 0
     numa         = false
     sockets      = 1
-    type         = "x86-64-v2-AES"
+    type         = "kvm64"
     units        = 1
   }
   disk {
@@ -157,7 +157,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_ubuntu" {
     limit        = 0
     numa         = false
     sockets      = 1
-    type         = "x86-64-v2-AES"
+    type         = "kvm64"
     units        = 1
   }
   disk {
@@ -266,7 +266,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_rhel" {
     limit        = 0
     numa         = false
     sockets      = 1
-    type         = "x86-64-v2-AES"
+    type         = "kvm64"
     units        = 1
   }
   disk {

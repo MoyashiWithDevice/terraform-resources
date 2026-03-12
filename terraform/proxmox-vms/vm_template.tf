@@ -9,6 +9,7 @@ resource "proxmox_virtual_environment_vm" "ubuntu_temp" {
   vm_id                                = 9000
   cpu{
     cores = 2
+    type  = "kvm64"
   }
   memory{
     dedicated = 2048

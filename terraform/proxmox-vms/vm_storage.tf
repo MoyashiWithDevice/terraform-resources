@@ -45,7 +45,7 @@ resource "proxmox_virtual_environment_vm" "nfs_server" {
     limit        = 0
     numa         = false
     sockets      = 1
-    type         = "x86-64-v2-AES"
+    type         = "kvm64"
     units        = 1
   }
   disk {
@@ -137,7 +137,7 @@ resource "proxmox_virtual_environment_vm" "truenas" {
     limit        = 0
     numa         = false
     sockets      = 1
-    type         = "x86-64-v2-AES"
+    type         = "kvm64"
     units        = 1
   }
   disk {
