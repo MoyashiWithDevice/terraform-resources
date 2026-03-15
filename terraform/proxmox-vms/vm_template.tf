@@ -7,12 +7,32 @@ resource "proxmox_virtual_environment_vm" "ubuntu_temp" {
   name                                 = "Ubuntu24.04-template"
   node_name                            = "proxmox-host1"
   vm_id                                = 9000
+
+  boot_order                           = ["scsi0", "net0"]
+
   cpu{
     cores = 2
     type  = "host"
   }
   memory{
     dedicated = 2048
+  }
+  disk {
+    aio               = "io_uring"
+    backup            = true
+    cache             = "none"
+    datastore_id      = "local-lvm"
+    discard           = "ignore"
+    file_format       = "raw"
+    file_id           = null
+    import_from       = null
+    interface         = "scsi0"
+    iothread          = false
+    path_in_datastore = "base-9000-disk-0"
+    replicate         = true
+    serial            = null
+    size              = 32
+    ssd               = false
   }
 
   network_device {
