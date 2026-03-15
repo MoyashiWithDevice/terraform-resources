@@ -36,7 +36,7 @@ resource "proxmox_virtual_environment_vm" "kube_ctrl" {
   cpu {
     affinity     = null
     architecture = null
-    cores        = 4
+    cores        = 6
     flags        = []
     hotplugged   = 0
     limit        = 0
@@ -151,7 +151,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_ubuntu" {
   cpu {
     affinity     = null
     architecture = null
-    cores        = 3
+    cores        = 6
     flags        = []
     hotplugged   = 0
     limit        = 0
@@ -195,7 +195,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_ubuntu" {
     ssd               = false
   }
   memory {
-    dedicated      = 8192
+    dedicated      = 16384
     floating       = 0
     hugepages      = null
     keep_hugepages = false
@@ -260,7 +260,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_rhel" {
   cpu {
     affinity     = null
     architecture = null
-    cores        = 3
+    cores        = 6
     flags        = []
     hotplugged   = 0
     limit        = 0
@@ -310,7 +310,7 @@ resource "proxmox_virtual_environment_vm" "kube_worker_rhel" {
     type              = "4m"
   }
   memory {
-    dedicated      = 8192
+    dedicated      = 16384
     floating       = 0
     hugepages      = null
     keep_hugepages = false
